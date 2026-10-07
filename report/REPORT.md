@@ -1,22 +1,20 @@
-# Báo cáo Day 6: [ĐIỀN tên đề tài ngắn]
+# Báo cáo Day 6: LiDAR-Camera Projection QA & Calibration Drift Sensitivity
 
 > Thay **mọi** ô có chữ ĐIỀN nằm trong ngoặc vuông bằng nội dung của bạn, xoá luôn cả dấu ngoặc vuông. Lệnh `python tools/check_submission.py` sẽ báo FAIL nếu còn sót bất kỳ chỗ nào.
 
-- **Họ tên:** [ĐIỀN]
-- **MSSV:** [ĐIỀN] (phải trùng với MSSV trong tên repo `<HoVaTen>-<MSSV>-Track4-Day21`)
-- **Lớp:** [ĐIỀN]
-- **Link repo:** [ĐIỀN]
-- **Topic:** [ĐIỀN một chữ cái A/B/C/D/E/F] — [ĐIỀN tên topic]
-- **Dataset:** [ĐIỀN một hoặc nhiều trong: data/synthetic, data/kitti_mini, data/nuscenes_mini_subset, log riêng]
-- **Các frame đã dùng:** [ĐIỀN danh sách frame id, ví dụ 000011, 000049 hoặc scene-0103_010]
+- **Họ tên:** Vũ Gia Khải
+- **MSSV:** 2A202602786
+- **Lớp:** K4-Track4
+- **Link repo:** https://github.com/vukhai248/K4-Track4-Day06-VuGiaKhai-2A202602786-3D-From-Point-Clouds
+- **Topic:** A — LiDAR-camera projection QA
+- **Dataset:** data/synthetic, data/kitti_mini, data/nuscenes_mini_subset
+- **Các frame đã dùng:** 000000, 000011, 000021, 000049, scene-0103_010
 
 > Hãy viết ngắn: mỗi mục từ 3 đến 8 dòng, ưu tiên số liệu và hình ảnh.
 
 ## 1. Claim
 
-Một câu khẳng định kỹ thuật có thể kiểm chứng. Ví dụ: *"Lệch yaw 1° làm 12% điểm LiDAR rơi ra khỏi vật thể ở 30 m, phát hiện được bằng edge-alignment score với ngưỡng X."*
-
-[ĐIỀN]
+Độ lệch góc xoay Yaw từ 1.0° trở lên hoặc sai số dịch chuyển t_y từ 0.1 m giữa LiDAR và Camera làm giảm hơn 30% tỷ lệ điểm LiDAR rơi đúng vào bounding box 2D của vật thể (Point-in-Box ratio), đồng thời sự suy giảm này diễn ra nhanh gấp đôi đối với các vật thể ở khoảng cách xa (>30 m) so với vật thể ở cự ly gần (<15 m), có thể được phát hiện tự động bằng bộ giám sát consistency giữa 3D box projection và 2D detection box.
 
 ## 2. Evidence
 
